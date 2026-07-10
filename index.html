@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BPO Data Entry Application</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="Data entry workspace">
+        <form id="entryForm" class="entry-form" autocomplete="off">
+          <div class="fields-grid">
+            <label>
+              <span>Image Name</span>
+              <input id="imageName" name="imageName" type="text" readonly>
+            </label>
+
+            <label>
+              <span>Record Number</span>
+              <input name="recordNumber" type="text" value="XTE_BET-3748">
+            </label>
+
+            <label>
+              <span>Type of Account</span>
+              <input name="accountType" type="text" value="Provident Financial Services Inc.">
+            </label>
+
+            <label>
+              <span>Regd Address</span>
+              <input name="registeredAddress" type="text" value="88276 MONTEREY LANE">
+            </label>
+
+            <label>
+              <span>Full Name</span>
+              <input name="fullName" type="text" value="DEXTER EDGHINN">
+            </label>
+
+            <label>
+              <span>Father/ Husband&nbsp; Name</span>
+              <input name="fatherHusbandName" type="text" value="Harmonia Salmen">
+            </label>
+
+            <label>
+              <span>Date of Birth</span>
+              <input name="dateOfBirth" type="text" value="Tuesday, 06,26,1964">
+            </label>
+
+            <label>
+              <span>Gender</span>
+              <input name="gender" type="text" value="Male">
+            </label>
+
+            <label>
+              <span>Nationality</span>
+              <input name="nationality" type="text" value="UNITED STATES">
+            </label>
+
+            <label>
+              <span>Address</span>
+              <input name="address" type="text" value="792 ANHALT JUNCTION">
+            </label>
+
+            <label>
+              <span>City/District/Town</span>
+              <input name="city" type="text" value="INGLESIDE">
+            </label>
+
+            <label>
+              <span>State</span>
+              <input name="state" type="text" value="MD">
+            </label>
+
+            <label>
+              <span>Pincode</span>
+              <input name="pincode" type="text" value="21644">
+            </label>
+
+            <label>
+              <span>Mobile Number</span>
+              <input name="mobileNumber" type="text" value="(686) 653-5382">
+            </label>
+
+            <label>
+              <span>Email</span>
+              <input name="email" type="email" value="salmen@myspace.com">
+            </label>
+
+            <label>
+              <span>Contact 1</span>
+              <input name="contact1" type="text" value="(835) 240-6748">
+            </label>
+
+            <label>
+              <span>Contact 2</span>
+              <input name="contact2" type="text" value="(315) 841-8135">
+            </label>
+
+            <label>
+              <span>Address Verification</span>
+              <input name="addressVerification" type="text" value="VERIFIED">
+            </label>
+
+            <label>
+              <span>ID Verification</span>
+              <input name="idVerification" type="text" value="YES">
+            </label>
+
+            <label>
+              <span>Center Name</span>
+              <input name="centerName" type="text" value="GRANDAUNT">
+            </label>
+
+            <label>
+              <span>Center Code</span>
+              <input name="centerCode" type="text" value="258Q-Q3ZS-3XO6">
+            </label>
+
+            <label class="remarks-field">
+              <span>Remarks</span>
+              <textarea name="remarks">N.A.</textarea>
+            </label>
+
+            <button id="updateButton" class="update-button" type="submit">Update</button>
+          </div>
+        </form>
+
+        <aside class="action-panel" aria-label="Actions">
+          <button id="totalFormsButton" type="button">Total Forms</button>
+          <button id="selectImageButton" type="button">Select Image</button>
+          <button id="showDataButton" type="button">Show Data</button>
+          <button id="backupXmlButton" type="button">Backup XML</button>
+          <button id="searchCityButton" type="button">Search City</button>
+          <button id="exitButton" class="danger" type="button">Exit</button>
+          <button id="notesButton" type="button">Notes</button>
+          <div class="timer-stack">
+            <span>Logout Time: <strong id="logoutTime">22:00</strong></span>
+            <span>Remaining Time: <strong id="remainingTime">07:54:00</strong></span>
+          </div>
+        </aside>
+
+        <section class="preview-panel" aria-label="Image preview">
+          <div id="previewViewport" class="preview-viewport">
+            <div id="emptyPreview" class="empty-preview">
+              <strong>No image selected</strong>
+            </div>
+            <img id="imagePreview" alt="Selected source document">
+          </div>
+        </section>
+      </section>
+
+      <input id="imageInput" type="file" accept="image/*" multiple hidden>
+    </main>
+
+    <dialog id="messageDialog" class="message-dialog">
+      <div class="dialog-title">
+        <span>Data Entry</span>
+        <button id="closeDialogX" type="button" aria-label="Close">x</button>
+      </div>
+      <p id="dialogMessage">Data Updated successfully</p>
+      <menu>
+        <button id="closeDialogButton" type="button">OK</button>
+      </menu>
+    </dialog>
+
+    <dialog id="dataDialog" class="data-dialog">
+      <div class="dialog-title">
+        <span>Result Data</span>
+        <button id="closeDataX" type="button" aria-label="Close">x</button>
+      </div>
+      <div class="data-toolbar">
+        <strong id="rowCount">0 records</strong>
+        <button id="exportExcelButton" type="button">Export Excel</button>
+        <button id="clearDataButton" type="button">Clear Data</button>
+      </div>
+      <div class="table-wrap">
+        <table id="resultTable">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>

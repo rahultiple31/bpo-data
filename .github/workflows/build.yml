@@ -1,0 +1,54 @@
+name: Build
+
+"on":
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build static application
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Verify required files
+        run: |
+          test -f index.html
+          test -f styles.css
+          test -f app.js
+
+      - name: Check JavaScript syntax
+        run: node --check app.js
+
+      - name: Validate application references
+        run: |
+          grep -q 'styles.css' index.html
+          grep -q 'app.js' index.html
+          grep -q 'id="entryForm"' index.html
+          grep -q 'id="imageInput"' index.html
+          grep -q 'function exportExcel' app.js
+
+      - name: Build artifact
+        run: |
+          mkdir -p dist
+          cp index.html styles.css app.js README.md dist/
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: bpo-data-entry-app
+          path: dist/
