@@ -289,7 +289,7 @@
 
     const data = collectFormData();
     const existingIndex = records.findIndex((record) => (
-      record.imageName === data.imageName && record.recordNumber === data.recordNumber
+      record.imageName === data.imageName
     ));
 
     if (existingIndex >= 0) {
@@ -300,6 +300,7 @@
 
     saveRecords();
     updateCounter();
+    clearEntryFields();
     showMessage("Data Updated successfully");
   });
 
